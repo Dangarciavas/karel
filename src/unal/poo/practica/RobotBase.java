@@ -14,47 +14,35 @@ public class RobotBase
         
 	public static void main (String[] args){
             //Declarar la creacion de la ciudad
-            objetos = new City("Field.txt");
+            objetos = new City("gotham.txt");
 	    objetos.showThingCounts(true);
             
             //Direction.NORTH, EAST, SOUTH, WEST
             //Definicion de la ubicacion del robot, Ciudad, posicion, Direccion, Numero things en el bolso.
-            estudiante = new Robot(objetos,0, 2, Direction.EAST,10);
+            estudiante = new Robot(objetos,0, 2, Direction.WEST,10);
+            //Girar  180 grados
+            rotacion(180);
+            movimiento(1);
+            for(int i = 0; i<3;i++){
+            rotacion(270);
+            movimiento(3);            
+            }
+            rotacion(270);
+            movimiento(2);
+            rotacion(180);
             
-	    //Mover una interseccion en el sentido al cual este apuntando el objeto.
-            estudiante.move ();
-            
-            //Girar a la izquierda
-            estudiante.turnLeft();
-            
-            //Tomando decisiones, Si puedo tomar un Thing
-            boolean puedeTomar = estudiante.canPickThing();
-            
-            //Tomar un Thing
-            if(puedeTomar == true)
-               estudiante.pickThing();
-            
-            //Especifica el numero de Thing que tiene en robot en el bolso
-            int numeroThings = estudiante.countThingsInBackpack();
-            
-            //Poner Thing, se debe validar que tenga things en el bolso
-            estudiante.putThing();
-                       
-            //Si el frente esta libre de Wall
-            estudiante.frontIsClear();
-            
-            //Invocando una funcion
-            creacionFuncion(4);
-            
-            //Toman un Thing
-            estudiante.pickThing();
             
             
 	}
         
-        public static void creacionFuncion(int parametroEntrada){
-            for (int i = 0; i < parametroEntrada; i++) 
-                estudiante.move();
+        public static void movimiento(int cantidad){
+            for(int i = 0;i < cantidad; i++)
+                   estudiante.move();
+        }
+        public static void rotacion (int grados){
+        int gradtemp = grados/90;
+        for(int i = 0; i<gradtemp;i++)
+            estudiante.turnLeft();
         }
 }
 
