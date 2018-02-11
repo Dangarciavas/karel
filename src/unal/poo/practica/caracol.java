@@ -24,25 +24,13 @@ public class caracol
             
             movimiento(6);
             right();
-            movimiento(5);
-            right();
-            movimiento(5);
-            right();
-            movimiento(4);
-            right();
-            movimiento(4);
-            right();
-            movimiento(3);
-            right();
-            movimiento(3);
-            right();
-            
-            
-            
-            
-            
-            
-	}
+            for(int i =5;i>0;i--){
+                movimiento(i);
+                right();
+                movimiento(i);
+                right();         
+            }        
+       	}
         
         public static void pickup(){
         boolean bolas = estudiante.canPickThing();
@@ -51,9 +39,11 @@ public class caracol
             }
         }
         public static void movimiento(int cantidad){
+            pickup();  
             for(int i = 0;i < cantidad; i++)
-                   estudiante.move();
-                   pickup();
+                pickup();
+                estudiante.move();
+                
         }
         public static void left (){
               estudiante.turnLeft();
